@@ -3,21 +3,21 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: nginx-rwo
-  name: nginx-rwo
+    app: nginx-rwo-2
+  name: nginx-rwo-2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-rwo
+      app: nginx-rwo-2
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nginx-rwo
+        app: nginx-rwo-2
     spec:
-      nodeName: cnpwkpr81.dc2.true.th
+      nodeName: cnpwkpr82.dc2.true.th
       containers:
       - image: nginx
         name: nginx
@@ -27,5 +27,5 @@ spec:
       volumes:
         - name: mypd
           persistentVolumeClaim:
-            claimName: pvc-rwo
+            claimName: pvc-rwo-2
 status: {}
