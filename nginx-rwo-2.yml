@@ -17,7 +17,7 @@ spec:
       labels:
         app: nginx-rwo-2
     spec:
-      nodeName: cnpwkpr82.dc2.true.th
+      nodeName: cnpwkpr21.dc2.true.th
       containers:
       - image: nginx
         name: nginx

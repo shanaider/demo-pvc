@@ -1,0 +1,26 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello-orig
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+            volumeMounts:
+              - name: local-storage
+                mountPath: /data/
+          volumes: 
+          - name: local-storage
+            persistentVolumeClaim:
+              claimName: pvc-rwo
+          restartPolicy: OnFailure

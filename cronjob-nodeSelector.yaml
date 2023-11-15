@@ -1,0 +1,30 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster && sleep 10000
+            volumeMounts:
+              - name: local-storage
+                mountPath: /data/
+          tolerations:
+          - key: "node.kubernetes.io/unschedulable"
+            operator: "Exists"
+            effect: "NoSchedule"
+          volumes: 
+          - name: local-storage
+            persistentVolumeClaim:
+              claimName: pvc-rwo
+          restartPolicy: OnFailure

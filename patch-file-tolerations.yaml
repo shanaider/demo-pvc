@@ -1,0 +1,9 @@
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          tolerations:
+          - key: "node.kubernetes.io/unschedulable"
+            operator: "Exists"
+            effect: "NoSchedule"

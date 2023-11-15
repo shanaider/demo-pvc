@@ -1,21 +1,8 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-spec:
-  ports:
-  - port: 80
-    name: web
-  clusterIP: None
-  selector:
-    app: nginx
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: web
+  name: web-nfs
 spec:
   podManagementPolicy: Parallel
   selector:
@@ -58,8 +45,8 @@ spec:
   - metadata:
       name: www
     spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "ontap-san"
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: "ontap-nfs"
       resources:
         requests:
           storage: 1Gi

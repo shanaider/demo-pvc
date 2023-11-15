@@ -59,7 +59,7 @@ spec:
       name: www
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "ontap-san"
+      storageClassName: "longhorn"
       resources:
         requests:
           storage: 1Gi

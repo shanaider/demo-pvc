@@ -1,0 +1,218 @@
+{
+    "apiVersion": "batch/v1beta1",
+    "kind": "CronJob",
+    "metadata": {
+        "creationTimestamp": "2023-02-17T09:32:14Z",
+        "managedFields": [
+            {
+                "apiVersion": "batch/v1beta1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:spec": {
+                        "f:concurrencyPolicy": {},
+                        "f:failedJobsHistoryLimit": {},
+                        "f:jobTemplate": {
+                            "f:spec": {
+                                "f:template": {
+                                    "f:spec": {
+                                        "f:containers": {
+                                            "k:{\"name\":\"hello\"}": {
+                                                ".": {},
+                                                "f:command": {},
+                                                "f:image": {},
+                                                "f:imagePullPolicy": {},
+                                                "f:name": {},
+                                                "f:resources": {},
+                                                "f:terminationMessagePath": {},
+                                                "f:terminationMessagePolicy": {},
+                                                "f:volumeMounts": {
+                                                    ".": {},
+                                                    "k:{\"mountPath\":\"/data/\"}": {
+                                                        ".": {},
+                                                        "f:mountPath": {},
+                                                        "f:name": {}
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "f:dnsPolicy": {},
+                                        "f:restartPolicy": {},
+                                        "f:schedulerName": {},
+                                        "f:securityContext": {},
+                                        "f:terminationGracePeriodSeconds": {},
+                                        "f:tolerations": {},
+                                        "f:volumes": {
+                                            ".": {},
+                                            "k:{\"name\":\"local-storage\"}": {
+                                                ".": {},
+                                                "f:name": {},
+                                                "f:persistentVolumeClaim": {
+                                                    ".": {},
+                                                    "f:claimName": {}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "f:schedule": {},
+                        "f:successfulJobsHistoryLimit": {},
+                        "f:suspend": {}
+                    }
+                },
+                "manager": "kubectl-create",
+                "operation": "Update",
+                "time": "2023-02-17T09:32:14Z"
+            },
+            {
+                "apiVersion": "batch/v1beta1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:status": {
+                        "f:active": {},
+                        "f:lastScheduleTime": {}
+                    }
+                },
+                "manager": "kube-controller-manager",
+                "operation": "Update",
+                "time": "2023-02-17T09:33:32Z"
+            }
+        ],
+        "name": "hello",
+        "namespace": "default",
+        "resourceVersion": "1333891296",
+        "uid": "f0652a78-1978-4c42-bc3a-005329911928"
+    },
+    "spec": {
+        "concurrencyPolicy": "Allow",
+        "failedJobsHistoryLimit": 1,
+        "jobTemplate": {
+            "metadata": {
+                "creationTimestamp": null
+            },
+            "spec": {
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "command": [
+                                    "/bin/sh",
+                                    "-c",
+                                    "date; echo Hello from the Kubernetes cluster \u0026\u0026 sleep 10000"
+                                ],
+                                "image": "busybox:1.28",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "hello",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/data/",
+                                        "name": "local-storage"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "OnFailure",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "tolerations": [
+                            {
+                                "effect": "NoSchedule",
+                                "key": "node.kubernetes.io/unschedulable",
+                                "operator": "Exists"
+                            }
+                        ],
+                        "volumes": [
+                            {
+                                "name": "local-storage",
+                                "persistentVolumeClaim": {
+                                    "claimName": "pvc-rwo"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "schedule": "*/1 * * * *",
+        "successfulJobsHistoryLimit": 3,
+        "suspend": false
+    },
+    "status": {
+        "active": [
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626380",
+                "namespace": "default",
+                "resourceVersion": "1333882746",
+                "uid": "e3f63482-268f-44d5-9879-939c4c1f7ae7"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626440",
+                "namespace": "default",
+                "resourceVersion": "1333883861",
+                "uid": "b886a211-39ef-4d53-951a-d99cfd29a3ad"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626500",
+                "namespace": "default",
+                "resourceVersion": "1333884814",
+                "uid": "66f44ca5-2b49-4ce1-91b7-82ef973b4b32"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626560",
+                "namespace": "default",
+                "resourceVersion": "1333887433",
+                "uid": "5229dd75-16dd-4f03-9c1c-20a93a74293a"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626620",
+                "namespace": "default",
+                "resourceVersion": "1333888336",
+                "uid": "9714f34d-b4c5-4360-914d-5315f7d9530f"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626680",
+                "namespace": "default",
+                "resourceVersion": "1333889239",
+                "uid": "0f3c8fe5-b2af-46c8-bdab-a48021397ca0"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626740",
+                "namespace": "default",
+                "resourceVersion": "1333890219",
+                "uid": "5f6729e0-fb47-47f7-9dd8-4dfe4164f533"
+            },
+            {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "hello-1676626800",
+                "namespace": "default",
+                "resourceVersion": "1333891288",
+                "uid": "3f6953a5-b4b4-4f5c-8e65-8d3966fbbb24"
+            }
+        ],
+        "lastScheduleTime": "2023-02-17T09:40:00Z"
+    }
+}
